@@ -1,4 +1,4 @@
-import { keyframes, useTheme } from "@emotion/react";
+import { keyframes} from "@emotion/react";
 import styled from "@emotion/styled";
 import {
   AddRounded,
@@ -8,7 +8,6 @@ import {
   DeleteForeverRounded,
   DownloadDoneRounded,
   Favorite,
-  FavoriteRounded,
   FiberManualRecord,
   GetAppRounded,
   GitHub,
@@ -35,8 +34,6 @@ import {
 import React, { useContext, useEffect, useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { CustomDialogTitle, LogoutDialog, SettingsDialog } from ".";
-import bmcLogoLight from "../assets/bmc-logo-light.svg";
-import bmcLogo from "../assets/bmc-logo.svg";
 import logo from "../assets/logo256.png";
 import { defaultUser } from "../constants/defaultUser";
 import { UserContext } from "../contexts/UserContext";
@@ -58,9 +55,7 @@ export const ProfileSidebar = () => {
   const [lastUpdate, setLastUpdate] = useState<string | null>(null);
   const [issuesCount, setIssuesCount] = useState<number | null>(null);
 
-  const [bmcSupporters, setBmcSupporters] = useState<number | null>(null);
 
-  const theme = useTheme();
   const n = useNavigate();
 
   useEffect(() => {
@@ -76,7 +71,7 @@ export const ProfileSidebar = () => {
       const { supportersCount } = await fetchBMCInfo();
       // In case BMC api fails
       if (supportersCount > 0) {
-        setBmcSupporters(supportersCount);
+       
       } else {
         console.error("No BMC supporters found.");
       }
@@ -613,11 +608,7 @@ const LogoText = styled.h2`
   }
 `;
 
-const BmcIcon = styled.img`
-  width: 1em;
-  height: 1em;
-  font-size: 1.5rem;
-`;
+
 
 const ProfileOptionsBottom = styled.div`
   margin-top: auto;
